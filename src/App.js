@@ -1,6 +1,7 @@
 import './App.css';
 
 import { connect } from "react-redux";
+import nameAction from "./actions/nameAction"
 
 function App(props) {
   console.log(props)
@@ -8,20 +9,21 @@ function App(props) {
     <div className="App">
      <h1>My Redux App</h1>
      <h2>My Name is {props.myName}</h2>
-     <button onClick={()=>{props.changeName("Saidul")}} >Change this name</button>
+     <button onClick={()=>{props.changeName()}} >Change this name</button>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    myName : state.name
+    myName : state.name,
+    wish : state.wish
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeName : (name) => { dispatch({ type:"CHANGE_NAME", payload:name }) }
+    changeName : () => { dispatch(nameAction()) }
   }
 }
 

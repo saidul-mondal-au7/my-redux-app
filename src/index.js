@@ -4,11 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import Reducer from "./reducers/reducer"
+import nameReducer from "./reducers/nameReducer"
+import wishReducer from "./reducers/wishReducer"
+import thunk from "redux-thunk"
 
-const store = createStore(Reducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const myState = combineReducers({
+ name: nameReducer,
+ wish: wishReducer
+})
+
+const store = createStore(myState,  applyMiddleware(thunk))
 
 ReactDOM.render(
 
