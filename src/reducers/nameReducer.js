@@ -1,6 +1,6 @@
 
 
-const nameReducer = (state = "", action) => {
+const nameReducer = (state = "Saidul Mondal", action) => {
 
     if(action.type === "CHANGE_NAME") {
         return action.payload;
